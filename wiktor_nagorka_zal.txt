@@ -1,0 +1,47 @@
+Zadanie 2:
+SELECT 
+    contactLastName, 
+    contactFirstName,
+    COUNT(orderNumber) as number_of_orders
+FROM 
+    customers c
+INNER JOIN 
+    orders o 
+ON
+    c.customerNumber = o.customerNumber
+GROUP by 1,2
+
+4A:
+select productName,  sum(quantityOrdered)
+from products natural join orderdetails
+group by productName
+having productName = '1952 Alpine Renault 1300'
+
+select productName,  sum(quantityOrdered)
+from products natural join orderdetails
+group by productName
+having productName = '1968 Ford Mustang'
+
+select productName,  sum(quantityOrdered)
+from products natural join orderdetails
+group by productName
+having productName = '1996 Moto Guzzi 1100i'
+
+
+
+4B:
+select year(o.orderDate) rok, sum(od.quantityOrdered) suma from orderdetails od 
+join orders o on od.orderNumber = o.orderNumber 
+join products p on p.productCode = od.productCode 
+where productName = '1969 Harley Davidson Ultimate Chopper'
+group by rok
+
+
+4C:
+select productLine, count(*) as number
+from productlines natural join products
+group by productLine
+having number > 10 and number < 20
+
+
+Link: https://github.com/wnagorkacdv/wn-itz-wou
